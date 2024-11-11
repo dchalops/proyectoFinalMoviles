@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginFlow.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             Title="LoginPage">
+
+    <Grid RowDefinitions="2*,*" Margin="0,10,0,0">
+        <VerticalStackLayout Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
+            <Frame BorderColor="Gray"
+                   CornerRadius="10"
+                   HasShadow="True"
+                   Margin="0,-20,0,0"
+                   ZIndex="0"
+                   Padding="8">
+
+                <Frame.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="20,20"
+                            Radius="10"
+                            Opacity="0.9" />
+                </Frame.Shadow>
+
+                <StackLayout Padding="10">
+                    <VerticalStackLayout Padding="10" BackgroundColor="{StaticResource White}">
+
+                        <Image Source="logoauth.png" HeightRequest="80" HorizontalOptions="Center" />
+
+                        <Label Text="AGMATICE APP" FontSize="24" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" Margin="0,20,0,0" />
+
+                        <Entry x:Name="Username" Placeholder="Usuario" FontSize="18" TextColor="Gray" Margin="0,20,0,0" />
+
+                        <Entry x:Name="Password" Placeholder="Contraseña" FontSize="18" TextColor="Gray" IsPassword="True" Margin="0,20,0,0" />
+
+                        <Button Text="Ingresar"
+                                FontSize="18"
+                                TextColor="White"
+                                BackgroundColor="#D99041"
+                                CornerRadius="25"
+                                WidthRequest="200"
+                                HeightRequest="50"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Margin="0,30,0,0" 
+                                x:Name="LoginButton"
+                                Clicked="LoginButton_Clicked"/>
+
+                        <ActivityIndicator x:Name="LoadingIndicator"
+                                           IsRunning="False"
+                                           IsVisible="False"
+                                           Color="#D99041"
+                                           WidthRequest="50"
+                                           HeightRequest="50"
+                                           HorizontalOptions="Center"
+                                           Margin="0,20,0,0" />
+
+                    </VerticalStackLayout>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

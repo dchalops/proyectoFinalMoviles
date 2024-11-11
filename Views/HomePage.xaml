@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginFlow.Views.HomePage"
+             Title="Home">
+
+    <Grid RowDefinitions="2*,*" Margin="0,10,0,0">
+        <VerticalStackLayout Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
+
+            <Frame BorderColor="Gray"
+               CornerRadius="10"
+               HasShadow="True"
+               Margin="0,-20,0,0"
+               ZIndex="0"
+               Padding="8">
+                <Frame.Shadow>
+                    <Shadow Brush="Black"
+                        Offset="20,20"
+                        Radius="10"
+                        Opacity="0.9" />
+                </Frame.Shadow>
+                <StackLayout Padding="10">
+                    <VerticalStackLayout Padding="10" BackgroundColor="{StaticResource White}" VerticalOptions="Center" HorizontalOptions="Center">
+
+                        <VerticalStackLayout VerticalOptions="Start" HorizontalOptions="Center">
+                            <Image Source="logoauth.png" HeightRequest="80" HorizontalOptions="Center" />
+                            <Label Text="AGMATICE APP" FontSize="24" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" Margin="0,10,0,20" />
+                        </VerticalStackLayout>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*" ColumnSpacing="20" RowSpacing="20" HorizontalOptions="Center">
+
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
+                                <Image Source="entrada.png" HeightRequest="80">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnEntradaTapped" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Text="Asistencia Entrada" FontSize="14" TextColor="Black" FontAttributes="Italic" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                <Image Source="ordenes.png" HeightRequest="80">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnOrdenesTapped" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Text="Generar órdenes de trabajo" FontSize="14" TextColor="Black" FontAttributes="Italic" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="Center">
+                                <Image Source="novedades.png" HeightRequest="80">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnNovedadesTapped" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Text="Novedades" FontSize="14" TextColor="Black" FontAttributes="Italic" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
+                                <Image Source="salida.png" HeightRequest="80">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnSalidaTapped" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Text="Asistencia Salida" FontSize="14" TextColor="Black" FontAttributes="Italic" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+
+                        </Grid>
+                    </VerticalStackLayout>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

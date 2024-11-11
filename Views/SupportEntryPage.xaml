@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:proyectoFinalMoviles.Views"
+             x:Class="proyectoFinalMoviles.Views.SupportEntryPage"
+             Title="Asistencia Entrada">
+
+    <Grid RowDefinitions="*,Auto" Margin="0,10,0,0">
+        <!-- Contenido desplazable principal -->
+        <ScrollView Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <VerticalStackLayout Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
+
+                <Frame BorderColor="Gray"
+                       CornerRadius="10"
+                       HasShadow="True"
+                       Margin="0,-20,0,0"
+                       ZIndex="0"
+                       Padding="8">
+                    <Frame.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="20,20"
+                                Radius="10"
+                                Opacity="0.9" />
+                    </Frame.Shadow>
+                    <StackLayout Padding="10">
+                        <VerticalStackLayout Padding="10" BackgroundColor="{StaticResource White}" VerticalOptions="Center" HorizontalOptions="Center">
+
+                            <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="logoauth.png"
+                                       HeightRequest="80"
+                                       HorizontalOptions="Center"
+                                       Grid.Row="0"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"/>
+
+                                <Label Text="AGMATICE APP"
+                                       FontSize="24"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       HorizontalOptions="Center"
+                                       Grid.Row="1"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"
+                                       Margin="0,10,0,0"/>
+
+                                <Label Text="Asistencia Entrada"
+                                       FontSize="20"
+                                       FontAttributes="Italic"
+                                       TextColor="Black"
+                                       HorizontalOptions="Center"
+                                       Grid.Row="2"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"
+                                       Margin="0,0,0,20"/>
+
+                                <Button Text="Leer NFC"
+                                        FontSize="18"
+                                        TextColor="White"
+                                        BackgroundColor="#D99041"
+                                        CornerRadius="25"
+                                        WidthRequest="200"
+                                        HeightRequest="50"
+                                        HorizontalOptions="Center"
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,15,0,15"/>
+                            </Grid>
+
+                            <VerticalStackLayout HorizontalOptions="FillAndExpand" Margin="0,20,0,0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Label Text="Marcaciones" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" />
+
+                                <Frame BorderColor="LightGray" CornerRadius="5" Padding="0" HorizontalOptions="FillAndExpand">
+                                    <ScrollView HeightRequest="150">
+                                        <CollectionView ItemsSource="{Binding Marcaciones}" SelectionMode="None">
+                                            <CollectionView.Header>
+                                                <Grid ColumnDefinitions="*,*,*" Padding="10" BackgroundColor="LightGray">
+                                                    <Label Text="Nombre" FontSize="14" FontAttributes="Bold" HorizontalOptions="Start" />
+                                                    <Label Text="Código" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" />
+                                                    <Label Text="Hora" FontSize="14" FontAttributes="Bold" HorizontalOptions="End" />
+                                                </Grid>
+                                            </CollectionView.Header>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid ColumnDefinitions="*,*,*" Padding="10">
+                                                        <Label Text="{Binding Nombre}" FontSize="14" HorizontalOptions="Start" />
+                                                        <Label Text="{Binding Codigo}" FontSize="14" HorizontalOptions="Center" />
+                                                        <Label Text="{Binding Hora}" FontSize="14" HorizontalOptions="End" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </ScrollView>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </StackLayout>
+                </Frame>
+                <!-- Footer Reutilizable, siempre visible en la parte inferior -->
+                <local:CustomFooter Grid.Row="1" HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        
+
+    </Grid>
+
+</ContentPage>
