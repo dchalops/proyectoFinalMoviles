@@ -10,6 +10,7 @@ namespace proyectoFinalMoviles.Models
     {
         public string Nombre { get; set; }
         public string Codigo { get; set; }
-        public string Hora { get; set; }
+
+        public string Hora { get; set; }  
     }
 }
