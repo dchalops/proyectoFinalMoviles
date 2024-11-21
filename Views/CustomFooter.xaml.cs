@@ -15,7 +15,6 @@ public partial class CustomFooter : ContentView
 
     private async void OnHomeClicked(object sender, EventArgs e)
     {
-        // Navegar a la página principal
         await Shell.Current.GoToAsync("//HomePage");
     }
 

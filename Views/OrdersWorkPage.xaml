@@ -2,11 +2,72 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="proyectoFinalMoviles.Views.OrdersWorkPage"
-             Title="OrdersWorkPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Ingresar Orden de Trabajo">
+    <VerticalStackLayout Padding="10" Spacing="10">
+
+        <HorizontalStackLayout Spacing="10">
+            <Label Text="Elija un presupuesto:" FontSize="16" VerticalTextAlignment="Center" />
+            <Picker x:Name="PresupuestoPicker" Title="Selecciona un presupuesto" WidthRequest="200" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="10">
+            <Label Text="Mostrar:" FontSize="16" VerticalTextAlignment="Center" />
+            <Picker x:Name="MostrarPicker" Title="Cantidad" WidthRequest="100">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>10</x:String>
+                        <x:String>25</x:String>
+                        <x:String>50</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="10">
+            <Label Text="Buscar:" FontSize="16" VerticalTextAlignment="Center" />
+            <Entry x:Name="BuscarEntry" Placeholder="Ingrese búsqueda" HorizontalOptions="FillAndExpand" />
+        </HorizontalStackLayout>
+
+        <Grid BackgroundColor="#2D3E50" Padding="5" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Área" TextColor="White" HorizontalTextAlignment="Center" FontSize="14" />
+            <Label Grid.Column="1" Text="Id" TextColor="White" HorizontalTextAlignment="Center" FontSize="14" />
+            <Label Grid.Column="2" Text="Actividad" TextColor="White" HorizontalTextAlignment="Center" FontSize="14" />
+            <Label Grid.Column="3" Text="Valor" TextColor="White" HorizontalTextAlignment="Center" FontSize="14" />
+            <Label Grid.Column="4" Text="Unidad" TextColor="White" HorizontalTextAlignment="Center" FontSize="14" />
+            <Label Grid.Column="5" Text="Opciones" TextColor="White" HorizontalTextAlignment="Center" FontSize="14" />
+        </Grid>
+
+        <ScrollView>
+            <CollectionView x:Name="DataGridRecords" Margin="0,10,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5" ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding Area}" HorizontalTextAlignment="Center" FontSize="14" />
+                            <Label Grid.Column="1" Text="{Binding Id}" HorizontalTextAlignment="Center" FontSize="14" />
+                            <Label Grid.Column="2" Text="{Binding Actividad}" HorizontalTextAlignment="Center" FontSize="14" />
+                            <Label Grid.Column="3" Text="{Binding Valor}" HorizontalTextAlignment="Center" FontSize="14" />
+                            <Label Grid.Column="4" Text="{Binding Unidad}" HorizontalTextAlignment="Center" FontSize="14" />
+                            <Button Grid.Column="5" Text="Editar" FontSize="14" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>
