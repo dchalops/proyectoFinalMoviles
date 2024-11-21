@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using proyectoFinalMoviles.Models;
 using Microsoft.Maui.Storage;
+using System.Text;
 
 namespace proyectoFinalMoviles.Services
 {
@@ -30,23 +31,28 @@ namespace proyectoFinalMoviles.Services
 
             try
             {
-                Console.WriteLine("Datos enviados: " + JsonSerializer.Serialize(credentials));
+                var jsonCredentials = JsonSerializer.Serialize(credentials);
 
-                await Task.Delay(1);
+                var content = new StringContent(jsonCredentials, Encoding.UTF8, "application/json");
 
-                var response = await _httpClient.PostAsJsonAsync("/api/login/", credentials);
+                Console.WriteLine("Datos enviados (JSON): " + jsonCredentials);
+
+                var response = await _httpClient.PostAsync("/api/login/", content);
+
+                var responseContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Contenido de la respuesta (RAW): " + responseContent);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("Contenido de la respuesta: " + responseContent);
-
+                    Console.WriteLine("Respuesta exitosa. Intentando deserializar...");
                     var responseData = JsonSerializer.Deserialize<AuthResponse>(responseContent);
 
                     if (responseData != null && responseData.status == 200)
                     {
                         await SecureStorage.SetAsync("authToken", responseData.token);
                         await SecureStorage.SetAsync("hasAuth", "true");
+
+                        //await SecureStorage.SetAsync("companies", responseData.Companies);
 
                         return (true, null);
                     }
@@ -58,19 +64,21 @@ namespace proyectoFinalMoviles.Services
                 }
                 else
                 {
-                    var errorContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("Error de respuesta: " + response.StatusCode);
-                    Console.WriteLine("Contenido del error: " + errorContent);
+                    Console.WriteLine($"Error en la solicitud: {response.StatusCode}");
+                    Console.WriteLine("Contenido del error (RAW): " + responseContent);
 
-                    string errorMessage;
+                    string errorMessage = "Unknown error occurred.";
                     try
                     {
-                        var errorData = JsonSerializer.Deserialize<ErrorResponse>(errorContent);
-                        errorMessage = errorData?.message?[0] ?? "Unknown error occurred.";
+                        var errorData = JsonSerializer.Deserialize<ErrorResponse>(responseContent);
+                        if (errorData?.message != null && errorData.message.Count > 0)
+                        {
+                            errorMessage = string.Join(", ", errorData.message);
+                        }
                     }
-                    catch
+                    catch (JsonException ex)
                     {
-                        errorMessage = "Unknown error occurred.";
+                        Console.WriteLine($"Error al deserializar la respuesta de error: {ex.Message}");
                     }
 
                     return (false, errorMessage);
@@ -78,9 +86,10 @@ namespace proyectoFinalMoviles.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al autenticarse: {ex.Message}");
+                Console.WriteLine($"Excepción al autenticarse: {ex.Message}");
                 return (false, $"Exception: {ex.Message}");
             }
         }
     }
+
 }

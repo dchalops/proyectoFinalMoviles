@@ -7,7 +7,6 @@
           BackgroundColor="White"
           Padding="10,0">
 
-                <!-- Icono de Recargar -->
                 <ImageButton Grid.Column="0"
                      Source="refresh_icon.png"
                      BackgroundColor="Transparent"
@@ -15,7 +14,6 @@
                      VerticalOptions="Center"
                      Clicked="OnRefreshClicked" />
 
-                <!-- Icono de Inicio -->
                 <ImageButton Grid.Column="1"
                      Source="home_icon.png"
                      BackgroundColor="Transparent"
@@ -23,7 +21,6 @@
                      VerticalOptions="Center"
                      Clicked="OnHomeClicked" />
 
-                <!-- Icono de Documento -->
                 <ImageButton Grid.Column="2"
                      Source="document_icon.png"
                      BackgroundColor="Transparent"

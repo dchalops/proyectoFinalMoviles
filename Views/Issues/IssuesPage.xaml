@@ -1,0 +1,44 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="proyectoFinalMoviles.Views.Issues.IssuesPage"
+             Title="IssuesPage">
+    <Grid RowDefinitions="Auto, *">
+        
+        <StackLayout Grid.Row="0" Padding="10">
+            <Label Text="Novedades" FontSize="Large" HorizontalOptions="Center" TextColor="White"/>
+            <Button Text="Agregar Novedad" 
+                    BackgroundColor="DarkOrange" 
+                    TextColor="White" 
+                    Clicked="AddIssueButton_Clicked" 
+                    Margin="10,0"/>
+        </StackLayout>
+
+        <Grid Grid.Row="1" Margin="10">
+            
+            <Grid RowDefinitions="Auto, *">
+                <Grid ColumnDefinitions="2*, 2*, 1*, 1*" BackgroundColor="LightGray" Padding="5">
+                    <Label Text="Mensaje" FontAttributes="Bold" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Tipo" FontAttributes="Bold" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Acciones" FontAttributes="Bold" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"/>
+                </Grid>
+
+                <CollectionView Grid.Row="1" x:Name="IssuesCollectionView" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="2*, 2*, 1*, 1*" Padding="5" Margin="0,0,0,1" BackgroundColor="White">
+                                <Label Text="{Binding message}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <Label Text="{Binding type}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="Center">
+                                    <ImageButton Source="edit_icon.png" VerticalOptions="Center" HorizontalOptions="Center"
+                                                 Clicked="OnEditClicked" HeightRequest="30" WidthRequest="30"/>
+                                    <ImageButton Source="delete_icon.png" VerticalOptions="Center" HorizontalOptions="Center"
+                                                 Clicked="OnDeleteClicked" HeightRequest="30" WidthRequest="30"/>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

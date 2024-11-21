@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="proyectoFinalMoviles.Views.Issues.EditIssuePage"
+             Title="EditIssuePage">
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <Label Text="Novedades" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Orange" />
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                <Label Text="Lote:" FontAttributes="Bold" VerticalOptions="Center" />
+                <Picker x:Name="BatchPicker"
+                    Title="Selecciona un lote"
+                    ItemDisplayBinding="{Binding fields.layer_name}" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="10">
+                <Label Text="Evidencia:" FontAttributes="Bold" VerticalOptions="Center" />
+                <ImageButton Source="upload_icon.png" Clicked="CapturePhotoButton_Clicked" HeightRequest="50" WidthRequest="50" />
+                <Label Text="Subir Archivo" VerticalOptions="Center" TextColor="Gray" />
+            </StackLayout>
+            <Image x:Name="EvidenceImage"
+                HeightRequest="200"
+                Aspect="AspectFit"
+                HorizontalOptions="Center" />
+
+            <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                <Label Text="Mensaje:" FontAttributes="Bold" />
+                <Editor x:Name="MessageEntry" Placeholder="Escribe un mensaje..." HeightRequest="100" />
+            </StackLayout>
+
+            <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                <Label Text="Tipo:" FontAttributes="Bold" />
+                <Entry x:Name="TypeEntry" Placeholder="Tipo de novedad" />
+            </StackLayout>
+
+            <Button Text="Generar Novedad" Clicked="SubmitIssueButton_Clicked" BackgroundColor="Orange" TextColor="White" FontAttributes="Bold" HeightRequest="50" HorizontalOptions="FillAndExpand" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
