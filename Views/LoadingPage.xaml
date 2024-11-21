@@ -6,7 +6,6 @@
              Title="LoadingPage">
 
     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-       
         <Image Source="logoauth.png" 
        WidthRequest="250"
        HeightRequest="250"
