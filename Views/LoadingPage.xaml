@@ -6,7 +6,13 @@
              Title="LoadingPage">
 
     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <Image Source="logoauth.png" 
+       WidthRequest="250"
+       HeightRequest="250"
+       HorizontalOptions="Center"
+       VerticalOptions="Center"/>
 
-        
+        <Label Text="Checking authentication..." HorizontalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>
