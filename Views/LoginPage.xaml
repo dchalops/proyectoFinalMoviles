@@ -32,7 +32,18 @@
 
                         <Entry x:Name="Password" Placeholder="Contraseña" FontSize="18" TextColor="Gray" IsPassword="True" Margin="0,20,0,0" />
 
-                        
+                        <Button Text="Ingresar"
+                                FontSize="18"
+                                TextColor="White"
+                                BackgroundColor="#D99041"
+                                CornerRadius="25"
+                                WidthRequest="200"
+                                HeightRequest="50"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Margin="0,30,0,0" 
+                                x:Name="LoginButton"
+                                Clicked="LoginButton_Clicked"/>
 
                         <ActivityIndicator x:Name="LoadingIndicator"
                                            IsRunning="False"
