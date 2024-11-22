@@ -21,7 +21,8 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>proyectoFinalMoviles</ApplicationTitle>
+		<ApplicationTitle>AGMATICE</ApplicationTitle>
+		<!--<ApplicationTitle>proyectoFinalMoviles</ApplicationTitle>-->
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.proyectofinalmoviles</ApplicationId>
@@ -36,10 +37,20 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
+		<AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+		<PackageCertificateThumbprint>254B7A611A2F13B949AAACDF59511FB376A82AFE</PackageCertificateThumbprint>
+		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+		<AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+		<AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+		<GenerateTestArtifacts>True</GenerateTestArtifacts>
+		<AppInstallerUri>C:\Users\User\Desktop\apk</AppInstallerUri>
+		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
 	  <DebugSymbols>True</DebugSymbols>
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
@@ -48,10 +59,11 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<!--<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />-->
+		<MauiIcon Include="Resources\AppIcon\iconnew.png" ForegroundScale="0.65" Color="white" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splashnew.png" Color="White" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -69,6 +81,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\iconnew.png" />
 	  <None Remove="Resources\Images\add_icon.png" />
 	  <None Remove="Resources\Images\delete_icon.png" />
 	  <None Remove="Resources\Images\edit_icon.png" />
@@ -77,6 +90,7 @@
 	  <None Remove="Resources\Images\novedades.png" />
 	  <None Remove="Resources\Images\ordenes.png" />
 	  <None Remove="Resources\Images\salida.png" />
+	  <None Remove="Resources\Splash\splashnew.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -130,6 +144,10 @@
 
 	<ItemGroup>
 	  <Folder Include="ViewModels\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiSplashScreen Include="Resources\Splash\splashnew.png" />
 	</ItemGroup>
 
 </Project>

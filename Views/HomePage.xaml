@@ -3,22 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LoginFlow.Views.HomePage"
              Title="Home">
+    
+    <VerticalStackLayout Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
 
-    <Grid RowDefinitions="2*,*" Margin="0,10,0,0">
-        <VerticalStackLayout Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
-
-            <Frame BorderColor="Gray"
-               CornerRadius="10"
-               HasShadow="True"
-               Margin="0,-20,0,0"
-               ZIndex="0"
-               Padding="8">
-                <Frame.Shadow>
-                    <Shadow Brush="Black"
-                        Offset="20,20"
-                        Radius="10"
-                        Opacity="0.9" />
-                </Frame.Shadow>
+            
                 <StackLayout Padding="10">
                     <VerticalStackLayout Padding="10" BackgroundColor="{StaticResource White}" VerticalOptions="Center" HorizontalOptions="Center">
 
@@ -68,7 +56,7 @@
                         </Grid>
                     </VerticalStackLayout>
                 </StackLayout>
-            </Frame>
+            
         </VerticalStackLayout>
-    </Grid>
+    
 </ContentPage>
